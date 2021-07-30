@@ -1,0 +1,114 @@
+body {
+    scroll-behavior: smooth;
+    transition: all 0.4s !important;
+}
+
+.fade-in-image {
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+}
+
+.fade-out-image {
+    animation: fadeOut ease-out 2s;
+    -webkit-animation: fadeOut ease-out 2s;
+    -moz-animation: fadeOut ease-out 2s;
+    -o-animation: fadeOut ease-out 2s;
+    visibility: hidden;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.uk-button-primary {
+    background-color: #313131 !important;
+    color: #fff !important;
+}
+
+.btn-primary {
+    background-color: #fc5b3f !important;
+    color: #fff !important;
+}
+
+.uk-button-primary:hover{
+    transition: all ease 200ms !important;
+    background-color: #c99c3b !important;
+    color: #fff;
+}
+
+.uk-button{
+    border: none;
+    overflow: visible;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 42px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.uk-border-rounded {
+    border-radius: 7px;
+}
+
+.uk-form-icon:not(a):not(button):not(input) {
+     pointer-events: all !important;
+}
+
+.button-caption{
+    color: rgba(255,255,255,.85);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 60px 45px;
+    font-size: 18px;
+    letter-spacing: .25px;
+    z-index: 20;
+    font-weight: 300;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.pulse {
+    animation: radial-pulse 2s infinite;
+}
+
+@keyframes radial-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+    }
+}
