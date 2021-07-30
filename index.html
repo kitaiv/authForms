@@ -63,23 +63,25 @@
                         <label class="mb-2">Email <span class="text-danger">*</span></label>
                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                             <span class="uk-form-icon uk-form-icon-flip fas fa-envelope fa-lg" style="display: flex"></span>
-                            <input type="text" class="form-control fs-13px uk-input uk-border-rounded" id="email" placeholder="Email address" required>
+                            <input type="text" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" class="form-control fs-13px uk-input uk-border-rounded" id="email" placeholder="Email address" required>
                         </div>
+                        <span style="color: darkred" id="email-error"></span>
                     </div>
                     <div class="mb-4">
                         <label class="mb-2">Password <span class="text-danger">*</span></label>
                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                             <span class="uk-form-icon uk-form-icon-flip fas fa-eye fa-lg" id="eye" style="display: flex; left: 0; cursor: pointer"></span>
                             <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-lg" style="display: flex"></span>
-                            <input type="password" id="password" class="form-control fs-13px uk-input uk-border-rounded" style="padding-left: 2.5rem;" placeholder="Password" required>
+                            <input pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" type="password" id="password" class="form-control fs-13px uk-input uk-border-rounded" style="padding-left: 2.5rem;" placeholder="Password" required>
                         </div>
+                        <span style="color: darkred" id="pass-error"></span>
                     </div>
                     <div class="mb-3">
                         <label class="mb-2">Re-enter Password <span class="text-danger">*</span></label>
                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                             <span class="uk-form-icon uk-form-icon-flip fas fa-eye fa-lg" id="eye2" style="display: flex; left: 0; cursor: pointer"></span>
                             <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-lg" style="display: flex"></span>
-                            <input type="password" class="form-control fs-13px uk-input uk-border-rounded" id="password2" style="padding-left: 2.5rem;" placeholder="Re-enter password" required>
+                            <input pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" type="password" class="form-control fs-13px uk-input uk-border-rounded" id="password2" style="padding-left: 2.5rem;" placeholder="Re-enter password" required>
                         </div>
                     </div>
                     <div class="mb-4" id="signUpBtnWrapper">
