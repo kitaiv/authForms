@@ -7,9 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
         email = document.querySelector('#email'),
         password = document.querySelector('#password'),
         password2 = document.querySelector('#password2'),
-        allInputs = document.querySelectorAll('.form-control');
+        allInputs = document.querySelectorAll('.form-control'),
+        emailError = document.querySelector('#email-error'),
+        passError = document.querySelector('#pass-error');
+
 
     signUpBtnWrapper.style.cursor = 'not-allowed';
+
+    const error = ["Email should include @ symbol!", "Password must contain 1 symbol, 1 title, 1 digit and from 6 characters", "Passwords doesn't match"]
 
 
     //changing background function on sign up page
@@ -51,30 +56,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    const emptyCheck = () => {
+    //input validation check
+    const checkInputs = () => {
         allInputs.forEach(el => {
+            const mailRegExp = /[@]/;
+            const passwordRegExp = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/
+            const emailReg = email.value.match(mailRegExp);
+            const passReg = password.value.match(passwordRegExp)
+            const passReg2 = password2.value.match(passwordRegExp)
+            const mailCheckRequirements = emailReg ? emailReg.length > 0 : false
+            const passCheckRequirements = passReg && passReg2 ? passReg.length > 0 && passReg2.length > 0 : false
             if (email.value === '' || password2.value === '' || password.value === '') {
                 signUpBtn.classList.add('btn-silver')
                 signUpBtn.classList.remove('btn-primary')
                 signUpBtn.setAttribute('disabled', '')
                 signUpBtnWrapper.style.cursor = 'not-allowed';
                 signUpBtn.style.cursor = 'not-allowed'
-                return null;
+                return false;
+
             }
 
             if (email.value !== '' || password2.value !== '' || password.value !== '') {
-                signUpBtn.classList.remove('btn-silver')
-                signUpBtn.classList.add('btn-primary')
-                signUpBtn.removeAttribute('disabled')
-                signUpBtnWrapper.style.cursor = 'pointer'
-                signUpBtn.style.cursor = 'pointer'
-                return null;
+                if (mailCheckRequirements) {
+                    emailError.textContent = ''
+                    if(passCheckRequirements){
+                        passError.textContent = ''
+                        if(password.value === password2.value){
+                            passError.textContent = '';
+                            signUpBtn.classList.remove('btn-silver')
+                            signUpBtn.classList.add('btn-primary')
+                            signUpBtn.removeAttribute('disabled')
+                            signUpBtnWrapper.style.cursor = 'pointer'
+                            signUpBtn.style.cursor = 'pointer'
+                            return false;
+                        }
+                        else{
+                            passError.textContent = error[2]
+                            signUpBtn.classList.add('btn-silver')
+                            signUpBtn.classList.remove('btn-primary')
+                            signUpBtn.setAttribute('disabled', '')
+                            signUpBtnWrapper.style.cursor = 'not-allowed';
+                            signUpBtn.style.cursor = 'not-allowed'
+                            return false;
+                        }
+                    }
+                    else{
+                        passError.textContent = error[1]
+                        signUpBtn.classList.add('btn-silver')
+                        signUpBtn.classList.remove('btn-primary')
+                        signUpBtn.setAttribute('disabled', '')
+                        signUpBtnWrapper.style.cursor = 'not-allowed';
+                        signUpBtn.style.cursor = 'not-allowed'
+                        return false;
+                    }
+                } else {
+                    emailError.textContent = error[0]
+                    signUpBtn.classList.add('btn-silver')
+                    signUpBtn.classList.remove('btn-primary')
+                    signUpBtn.setAttribute('disabled', '')
+                    signUpBtnWrapper.style.cursor = 'not-allowed';
+                    signUpBtn.style.cursor = 'not-allowed'
+                    return false;
+                }
             }
+
         })
     }
 
     allInputs.forEach(el => {
-        el.addEventListener('input', emptyCheck)
+        el.addEventListener('input', checkInputs)
     })
 
     eye.addEventListener('click', togglePass)
