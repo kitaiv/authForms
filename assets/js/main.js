@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //input validation check
     const checkInputs = () => {
         allInputs.forEach(el => {
-            const mailRegExp = /[@]/;
+            const mailRegExp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             const passwordRegExp = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/
             const emailReg = email.value.match(mailRegExp);
             const passReg = password.value.match(passwordRegExp)
@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eye.addEventListener('click', togglePass)
     eye2.addEventListener('click', togglePass)
+    signUpBtn.addEventListener('click', () => window.location = 'mail-verification.html')
 
     changeBg();
 
