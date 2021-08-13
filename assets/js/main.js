@@ -4,8 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
         eye2 = document.querySelector('#eye2'),
         signUpBtnWrapper = document.querySelector('#signUpBtnWrapper'),
         signUpBtn = document.querySelector('#signUpBtn'),
+
+        //auth data
         email = document.querySelector('#email'),
         password = document.querySelector('#password'),
+
+
         password2 = document.querySelector('#password2'),
         allInputs = document.querySelectorAll('.form-control'),
         emailError = document.querySelector('#email-error'),
@@ -123,13 +127,39 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
+    const authUser = () => {
+
+        let data = JSON.stringify({
+                "email": email.value,
+                "password": password.value
+            }
+        )
+
+        fetch('http://localhost:8080/api/auth/signup', {
+            method: "POST",
+            headers: {
+                // "Access-Control-Allow-Origin": "http://localhost:8081",
+                "Access-Control-Allow-Headers": "x-access-token, Origin, Content-Type, Accept",
+                "Content-Type": "application/json",
+            },
+            body: data,
+            mode: "no-cors",
+            referrerPolicy: "no-referrer",
+            redirect: "follow",
+        })
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(err => console.error('ERROR: ', err))
+
+    }
+
     allInputs.forEach(el => {
         el.addEventListener('input', checkInputs)
     })
 
     eye.addEventListener('click', togglePass)
     eye2.addEventListener('click', togglePass)
-    signUpBtn.addEventListener('click', () => window.location = 'mail-verification.html')
+    signUpBtn.addEventListener('click', authUser)
 
     changeBg();
 
