@@ -129,28 +129,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const authUser = () => {
 
-        let data = JSON.stringify({
-                "email": email.value,
-                "password": password.value
-            }
-        )
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-        fetch('http://localhost:8080/api/auth/signup', {
-            method: "POST",
-            headers: {
-                // "Access-Control-Allow-Origin": "http://localhost:8081",
-                "Access-Control-Allow-Headers": "x-access-token, Origin, Content-Type, Accept",
-                "Content-Type": "application/json",
-            },
-            body: data,
-            mode: "no-cors",
-            referrerPolicy: "no-referrer",
-            redirect: "follow",
-        })
+        let raw = JSON.stringify({
+            "email": email.value,
+            "password": password.value
+        });
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+
+        function sendEmail(email){
+
+            let raw = JSON.stringify({
+                "email": email
+            });
+
+            let requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'manual'
+            };
+
+            fetch("http://localhost:8080/api/mail/send", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+
+        fetch("http://localhost:8080/api/auth/signup", requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(err => console.error('ERROR: ', err))
-
+            .then(result => {
+                console.log(result)
+                window.location = 'mail-verification.html'
+                sendEmail(email.value)
+            })
+            .catch(error => console.log('ERROR: ', error));
     }
 
     allInputs.forEach(el => {

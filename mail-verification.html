@@ -83,38 +83,52 @@
 
                                         <form>
                                             <div class="row">
-                                                <div class="col-3">
+                                                <div class="col-md-2">
                                                     <div class="mb-3">
                                                         <label for="digit1-input" class="visually-hidden">Dight 1</label>
-                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 2)" maxlength="1" id="digit1-input">
+                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 2)" onchange="emailValidation(this, 0)" maxlength="1" id="digit1-input">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-3">
+                                                <div class="col-md-2">
                                                     <div class="mb-3">
                                                         <label for="digit2-input" class="visually-hidden">Dight 2</label>
-                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 3)" maxlength="1" id="digit2-input">
+                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 3)" onchange="emailValidation(this, 1)" maxlength="1" id="digit2-input">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-3">
+                                                <div class="col-md-2">
                                                     <div class="mb-3">
                                                         <label for="digit3-input" class="visually-hidden">Dight 3</label>
-                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 4)" maxlength="1" id="digit3-input">
+                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 4)" onchange="emailValidation(this, 2)" maxlength="1" id="digit3-input">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-3">
+                                                <div class="col-md-2">
                                                     <div class="mb-3">
                                                         <label for="digit4-input" class="visually-hidden">Dight 4</label>
-                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 4)" maxlength="1" id="digit4-input">
+                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 5)" onchange="emailValidation(this, 3)" maxlength="1" id="digit4-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="mb-3">
+                                                        <label for="digit4-input" class="visually-hidden">Dight 5</label>
+                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 6)" onchange="emailValidation(this, 4)" maxlength="1" id="digit5-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="mb-3">
+                                                        <label for="digit4-input" class="visually-hidden">Dight 6</label>
+                                                        <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 7)" onchange="emailValidation(this, 5)" maxlength="1" id="digit6-input">
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
 
                                         <div class="mt-4">
-                                            <a href="index.htm" class="btn btn-success w-md">Confirm</a>
+                                            <a href="#" class="btn btn-success w-md" id="confirmBtn">Confirm</a>
                                         </div>
                                     </div>
 
@@ -142,10 +156,10 @@
 
 <script src="./assets/js/vendor.min.js" type="52da7db223a9dd48e1b4b3e2-text/javascript"></script>
 <script src="./assets/js/app.min.js" type="52da7db223a9dd48e1b4b3e2-text/javascript"></script>
+<script src="assets/js/pages/two-step-verification.init.js"></script>
+<script src="assets/js/pages/email-check-validation.init.js"></script>
 <script src="./cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
         data-cf-settings="52da7db223a9dd48e1b4b3e2-|49" defer=""></script>
-<script defer="" src="./beacon.min.js"
-        data-cf-beacon='{"rayId":"675539505ad41cc0","version":"2021.7.0","r":1,"token":"4db8c6ef997743fda032d4f73cfeff63","si":10}'></script>
 <script src="./assets/js/main.js" defer></script>
 <script src="./assets/js/uikit.min.js" defer></script>
 </body>
